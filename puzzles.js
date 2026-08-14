@@ -64,7 +64,7 @@ const PUZZLES = [
     id: '5',
     name: 'Inception',
     difficulty: 5,
-    bestKnown: null,
+    bestKnown: 8,
     starter: true,
     pieces: [
       { cells:[[0,0],[0,3],[3,0],[3,3]] }, // 3-square hollow corners
