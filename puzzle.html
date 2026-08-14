@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Corral</title>
+  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header class="puzzle-header">
+    <nav class="puzzle-nav">
+      <a id="nav-prev" href="#">previous</a>
+      <a href="index.html">all puzzles</a>
+      <a id="nav-next" href="#">next</a>
+    </nav>
+    <h1 id="puzzle-name"></h1>
+    <div class="puzzle-meta"><span id="puzzle-difficulty"></span></div>
+  </header>
+
+  <div class="board-wrapper">
+    <div class="board-bar">
+      <div id="area-counter" title="Squares you've enclosed" aria-live="polite">0</div>
+      <div class="board-tools">
+        <button type="button" id="redo-button"  title="Clear the board" aria-label="Clear the board">↺</button>
+        <button type="button" id="help-button"  title="How to play"     aria-label="How to play">?</button>
+        <button type="button" id="share-button" title="Copy a link to this arrangement" aria-label="Share this arrangement">⇧</button>
+      </div>
+    </div>
+
+    <div id="grid"></div>
+
+    <div id="help-popover" hidden>
+      <div class="share-title">How to play</div>
+      <p class="how-lede">Your goal is to enclose as many squares as you can.</p>
+      <div class="how-figs"></div>
+      <div class="how-keys"></div>
+      <div class="how-actions">
+        <button type="button" id="help-solution" hidden>Show a solution</button>
+        <button type="button" id="help-close">Close</button>
+      </div>
+    </div>
+
+    <div id="share-popover" hidden>
+      <div class="share-title">Share this arrangement</div>
+      <div class="share-row">
+        <input id="share-link" type="text" readonly spellcheck="false">
+        <button type="button" id="share-copy">Copy</button>
+      </div>
+      <div id="share-status"></div>
+    </div>
+  </div>
+
+  <div id="tray"></div>
+</main>
+
+<!-- Touch only. A piece waits on the board while this bar turns it and
+     commits it, the way hovering + r/e/f works with a mouse and keyboard. -->
+<div id="piece-controls" hidden>
+  <button type="button" id="ctl-cancel">Cancel</button>
+  <button type="button" id="ctl-cw"   class="glyph" title="Rotate" aria-label="Rotate">↻</button>
+  <button type="button" id="ctl-flip" class="glyph" title="Flip"   aria-label="Flip">⇄</button>
+  <button type="button" id="ctl-place">Place</button>
+</div>
+
+<script src="puzzles.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

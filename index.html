@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corral</title>
+  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1 class="index-title">Corral</h1>
+  <div id="puzzle-list"></div>
+</main>
+
+<script src="puzzles.js"></script>
+<script>
+
+const PREVIEW_W   = 168;
+const PREVIEW_H   = 48;
+const PREVIEW_GAP = 8;   
+const PREVIEW_ROW = 4; 
+
+function previewFits(dims, size) {
+  const px = n => n * (size + 1) - 1;   // mini-grids put 1px between cells
+  let rowW = 0, rowH = 0, stacked = 0;
+
+  for (const [rows, cols] of dims) {
+    const w = px(cols), h = px(rows);
+    if (w > PREVIEW_W) return false;
+    if (rowW && rowW + PREVIEW_GAP + w > PREVIEW_W) {
+      stacked += rowH + PREVIEW_ROW;
+      rowW = 0;
+      rowH = 0;
+    }
+    rowW += (rowW ? PREVIEW_GAP : 0) + w;
+    rowH = Math.max(rowH, h);
+  }
+  return stacked + rowH <= PREVIEW_H;
+}
+
+// Largest mini-cell size at which all of a puzzle's pieces fit the strip.
+function previewSize(pieces) {
+  const dims = pieces.map(p => {
+    const rs = p.cells.map(x => x[0]), cs = p.cells.map(x => x[1]);
+    return [Math.max(...rs) - Math.min(...rs) + 1, Math.max(...cs) - Math.min(...cs) + 1];
+  });
+  for (let size = 9; size > 2; size--) if (previewFits(dims, size)) return size;
+  return 2;
+}
+
+const list = document.getElementById('puzzle-list');
+
+// Only the puzzles that have opened. Starters are always in; the rest arrive
+// one a day (see UNLOCK in puzzles.js).
+const open = unlockedPuzzles();
+
+for (const p of open) {
+  const card = document.createElement('a');
+  card.className = 'card';
+  card.href = `puzzle.html?id=${encodeURIComponent(p.id)}`;
+
+  const top = document.createElement('div');
+  top.className = 'card-top';
+
+  const h = document.createElement('h2');
+  h.textContent = p.name;
+  top.appendChild(h);
+
+  if (p.difficulty != null) {
+    const badge = document.createElement('div');
+    badge.className = 'card-badge';
+    badge.title = `Difficulty: ${p.difficulty}/10`;
+    badge.appendChild(miniIcon(difficultyCells(p.difficulty), difficultyColor(p.difficulty), 5));
+    top.appendChild(badge);
+  }
+
+  const preview = document.createElement('div');
+  preview.className = 'card-preview';
+  const size = previewSize(p.pieces);
+  for (const piece of p.pieces) preview.appendChild(miniIcon(piece.cells, piece.color, size));
+
+  card.append(top, preview);
+  list.appendChild(card);
+}
+</script>
+</body>
+</html>
