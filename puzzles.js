@@ -46,7 +46,7 @@ const PUZZLES = [
     ],
   },
   {
-  id: '9',
+  id: '4',
   starter: true,
   name: 'Merry-go Round',
   difficulty: 4,
@@ -61,8 +61,20 @@ const PUZZLES = [
   ],
   },
   {
-    id: '6',
+    id: '5',
+    name: 'Inception',
+    difficulty: 5,
+    bestKnown: null,
     starter: true,
+    pieces: [
+      { cells:[[0,0],[0,3],[3,0],[3,3]] }, // 3-square hollow corners
+      { cells:[[0,0],[0,3],[3,0],[3,3]] },
+      { cells:[[0,0],[0,3],[3,0],[3,3]] },
+      { cells:[[0,0],[0,3],[3,0],[3,3]] },
+    ],
+  },
+  {
+    id: '6',
     name: 'Staircase',
     difficulty: 5,
     bestKnown: 5,
@@ -151,7 +163,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '5',
+    id: '999',
     name: 'Puzzle 5',
     difficulty: 5,
     bestKnown: 9,
@@ -242,18 +254,6 @@ const PUZZLES = [
       { cells:[[0,0],[2,2]] },
       { cells:[[0,0],[2,2]] },
       { cells:[[0,0],[2,2]] },
-    ],
-  },
-  {
-    id: '19',
-    name: 'Puzzle 19',
-    difficulty: 5,
-    bestKnown: null,
-    pieces: [
-      { cells:[[0,0],[0,3],[3,0],[3,3]] }, // 3-square hollow corners
-      { cells:[[0,0],[0,3],[3,0],[3,3]] },
-      { cells:[[0,0],[0,3],[3,0],[3,3]] },
-      { cells:[[0,0],[0,3],[3,0],[3,3]] },
     ],
   },
   {

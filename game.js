@@ -582,7 +582,7 @@ const closeShare = closePopovers;
 function openShare() {
   closePopovers();
   shareLink.value = shareUrl();
-  shareStatus.textContent = occupied.size ? '' : 'The board is empty — this link just opens the puzzle.';
+  shareStatus.textContent = occupied.size ? '' : 'The board is empty. This link just opens the puzzle.';
   sharePop.hidden = false;
   shareLink.select();
   if (occupied.size) copyLink();
@@ -784,7 +784,7 @@ addEventListener('orientationchange', () => setTimeout(refit, 150));
 if (params.get('s')) {
   const state = decodeState(params.get('s'));
   if (state) applyState(state);
-  else toast("That link's arrangement doesn't fit this puzzle — starting empty.");
+  else toast("That link's arrangement doesn't fit this puzzle. Starting empty.");
 }
 
 boardChanged();
