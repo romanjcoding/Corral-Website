@@ -135,7 +135,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '4',
+    id: '998',
     name: 'Puzzle 4',
     difficulty: 9,
     bestKnown: 13,
