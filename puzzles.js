@@ -50,7 +50,7 @@ const PUZZLES = [
   starter: true,
   name: 'Merry-go Round',
   difficulty: 4,
-  bestKnown: null,
+  bestKnown: 13,
   pieces: [
     { cells:[[0,0],[0,1],[1,1]] }, // corner tromino
     { cells:[[0,0],[0,1],[1,1]] },
