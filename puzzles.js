@@ -338,15 +338,23 @@ const PUZZLES = [
     ],
   },
   {
+    id: '993',
+    name: '',
+    difficulty: 1,
+    bestKnown: 2,
+    pieces: [
+      { cells:[[0,0],[1,2]] }, // diamond corners
+      { cells:[[0,0],[1,2]] }, // diamond corners
+      { cells:[[0,0],[1,2]] }, // diamond corners
+    ],
+  },
+  {
     id: '997',
     name: 'Testing',
     difficulty: 0,
     bestKnown: null,
     pieces: [
-      { cells:[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,3],[0,4],[1,4],[2,4]] }, // diamond corners
-      { cells:[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,3],[0,4],[1,4],[2,4]] }, // diamond corners
-      { cells:[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,3],[0,4],[1,4],[2,4]] }, // diamond corners
-      { cells:[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,3],[0,4],[1,4],[2,4]] }, // diamond corners
+      { cells:[[0,0],[1,0],[2,1],[2,-1]] }, // diamond corners
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1],[2,0]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
@@ -358,8 +366,9 @@ const PUZZLES = [
       { cells:[[0,0],[2,3]] },
       { cells:[[0,0],[2,3]] },
       { cells:[[0,0],[2,3]] },
-      { cells:[[0,0],[2,3]] },
-      { cells:[[0,0],[2,3]] },
+      { cells:[[0,0],[1,2]] }, // diamond corners
+      { cells:[[0,0],[1,2]] }, // diamond corners
+      { cells:[[0,0],[1,2]] }, // diamond corners
     ],
   },
 
@@ -447,4 +456,35 @@ function miniIcon(cells, color, size = 8) {
     g.appendChild(d);
   }
   return g;
+}
+
+function pieceToCanvas(cells, color, { cell = 64, gap = 4, pad = 8 } = {}) {
+  const minR = Math.min(...cells.map(x => x[0])), minC = Math.min(...cells.map(x => x[1]));
+  const rows = Math.max(...cells.map(x => x[0])) - minR + 1;
+  const cols = Math.max(...cells.map(x => x[1])) - minC + 1;
+
+  const cv = document.createElement('canvas');
+  cv.width  = cols * cell + (cols - 1) * gap + pad * 2;
+  cv.height = rows * cell + (rows - 1) * gap + pad * 2;
+
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = color;
+  for (const [r, c] of cells) {
+    const x = pad + (c - minC) * (cell + gap);
+    const y = pad + (r - minR) * (cell + gap);
+    ctx.beginPath();
+    ctx.roundRect(x, y, cell, cell, cell * 0.12);  // drop roundRect for hard corners
+    ctx.fill();
+  }
+  return cv;
+}
+
+function savePiecePNG(piece, name = 'piece', opts) {
+  pieceToCanvas(piece.cells, piece.color, opts).toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `${name}.png`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }, 'image/png');
 }

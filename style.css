@@ -197,7 +197,16 @@ main {
 
 .how-lede { margin: 0 0 10px; font-size: 13px; }
 .how-foot { margin: 0 0 10px; opacity: 0.75; }
-.how-figs { display: flex; gap: 10px; justify-content: space-between; margin-bottom: 12px; }
+.how-figs {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  gap: 12px 16px;
+  margin-bottom: 12px;
+}
+
+
+
 .how-fig  { text-align: center; }
 .how-grid { display: grid; gap: 1px; margin: 0 auto 6px; --how-cell: 12px; }
 .how-cell { width: var(--how-cell); height: var(--how-cell); background: #fffaf2; }
@@ -326,6 +335,11 @@ main {
   background: #8e7456;
 }
 #piece-controls #ctl-place:active { background: #7a6248; }
+
+@media (min-width: 721px) {
+  #help-popover { width: 420px; }
+  .how-figs { grid-template-columns: repeat(4, max-content); }
+}
 
 @media (max-width: 720px) {
   body { padding: 12px 10px; }
