@@ -85,9 +85,20 @@ const PUZZLES = [
       { cells:[[0,0],[0,1],[1,1],[1,2]] },
     ],
   },
-
   {
-    id: '994',
+    id: '7',
+    name: 'Case Study #1',
+    difficulty: 4,
+    bestKnown: 11,
+    notes: '33 with one more piece, then 48?',
+    pieces: [
+      { cells:[[0,0],[1,1],[2,2],[3,3]] },
+      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+    ],
+  },
+  {
+    id: '999',
     name: 'LLL',
     difficulty: 1,
     bestKnown: 8,
@@ -172,7 +183,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '7',
+    id: '993',
     name: 'Puzzle 5',
     difficulty: 10,
     bestKnown: 31,
@@ -250,18 +261,6 @@ const PUZZLES = [
     pieces: [
       { cells:[[0,0],[2,2]] },
       { cells:[[0,0],[2,2]] },
-      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
-      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
-    ],
-  },
-  {
-    id: '16',
-    name: 'Case Study #1',
-    difficulty: 4,
-    bestKnown: 11,
-    notes: '33 with one more piece, then 48?',
-    pieces: [
-      { cells:[[0,0],[1,1],[2,2],[3,3]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
     ],
