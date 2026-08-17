@@ -627,7 +627,7 @@ const HOW_TO = [
     '..#.#..',
     '...#...',
   ]},
-  { caption: '', wall: '#2C7FB8', fill: '#A5D2EE', art: [
+  { caption: '', wall: '#9043B1', fill: '#D7B0E8', art: [
     '..#.#..',
     '.#.#.#.',
     '..#.#..',
