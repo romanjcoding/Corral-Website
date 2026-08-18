@@ -23,9 +23,9 @@
     <div class="board-bar">
       <div id="area-counter" title="Squares you've enclosed" aria-live="polite">0</div>
       <div class="board-tools">
-        <button type="button" id="redo-button"  title="Clear the board" aria-label="Clear the board">↺</button>
-        <button type="button" id="help-button"  title="How to play"     aria-label="How to play">?</button>
-        <button type="button" id="share-button" title="Copy a link to this arrangement" aria-label="Share this arrangement">⇧</button>
+        <button type="button" id="redo-button"   title="Clear the board" aria-label="Clear the board">↺</button>
+        <button type="button" id="help-button"   title="How to play"     aria-label="How to play">?</button>
+        <button type="button" id="submit-button" title="Send in your solution" aria-label="Send in your solution">⇧</button>
       </div>
     </div>
 
@@ -50,6 +50,34 @@
       </div>
       <div id="share-status"></div>
     </div>
+
+    <div id="solve-popover" hidden>
+      <div class="share-title">Send in your solution</div>
+      <p class="solve-note" id="solve-summary"></p>
+
+      <form id="solve-form">
+        <div class="share-row">
+          <input id="solve-name" name="name" type="text" placeholder="Your name"
+                 maxlength="40" autocomplete="name" spellcheck="false" data-fs-field required>
+          <button type="submit" id="solve-send" data-fs-submit-btn>Send</button>
+        </div>
+        <span class="fs-error" data-fs-error="name"></span>
+
+        <!-- the board itself, so the arrangement travels with the name -->
+        <input type="hidden" name="puzzle"   id="solve-puzzle">
+        <input type="hidden" name="score"    id="solve-score">
+        <input type="hidden" name="best"     id="solve-best">
+        <input type="hidden" name="code"     id="solve-code">
+        <input type="hidden" name="link"     id="solve-link">
+        <input type="hidden" name="_subject" id="solve-subject">
+
+        <!-- honeypot: real people never fill this in -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="fs-gotcha" aria-hidden="true">
+      </form>
+
+      <div id="solve-status" data-fs-success></div>
+      <div class="fs-error" data-fs-error></div>
+    </div>
   </div>
 
   <div id="tray"></div>
@@ -64,5 +92,6 @@
 
 <script src="puzzles.js"></script>
 <script src="game.js"></script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>

@@ -549,13 +549,20 @@ function syncUrl() {
   catch { /* file:// and the like — the share button still works */ }
 }
 
-const shareButton = document.getElementById('share-button');
 const sharePop    = document.getElementById('share-popover');
 const shareLink   = document.getElementById('share-link');
 const shareCopy   = document.getElementById('share-copy');
 const shareStatus = document.getElementById('share-status');
 const helpButton  = document.getElementById('help-button');
 const helpPop     = document.getElementById('help-popover');
+
+const submitButton = document.getElementById('submit-button');
+const solvePop     = document.getElementById('solve-popover');
+const solveName    = document.getElementById('solve-name');
+const solveSend    = document.getElementById('solve-send');
+const solveSummary = document.getElementById('solve-summary');
+const solveStatus  = document.getElementById('solve-status');
+const solveErrors  = solvePop.querySelectorAll('[data-fs-error]');
 
 function toast(message) {
   const el = document.createElement('div');
@@ -576,7 +583,11 @@ async function copyLink() {
   }
 }
 
-function closePopovers() { sharePop.hidden = true; helpPop.hidden = true; }
+function closePopovers() {
+  sharePop.hidden = true;
+  helpPop.hidden  = true;
+  solvePop.hidden = true;
+}
 const closeShare = closePopovers;
 
 function openShare() {
@@ -594,19 +605,55 @@ function openHelp() {
   helpPop.hidden = false;
 }
 
-shareButton.addEventListener('click', e => {
-  e.stopPropagation();
-  sharePop.hidden ? openShare() : closePopovers();
-});
+// The arrangement travels with the name: score, share code and link are all
+// filled in fresh each time the panel opens, so what gets sent is the board
+// exactly as it stands.
+function openSolve() {
+  closePopovers();
+  const area  = enclosedArea();
+  const empty = occupied.size === 0;
+
+  solveSummary.textContent = empty
+    ? 'Place some pieces first. There is nothing to send yet.'
+    : `Submit your solution of ${area} enclosed!`;
+
+  solveName.disabled = solveSend.disabled = empty;
+  solveStatus.textContent = '';
+  solveErrors.forEach(el => { el.textContent = ''; });
+  solveName.removeAttribute('aria-invalid');
+
+  document.getElementById('solve-puzzle').value  = `${PUZZLE.name} (id ${PUZZLE.id})`;
+  document.getElementById('solve-score').value   = area;
+  document.getElementById('solve-best').value    = PUZZLE.bestKnown ?? '';
+  document.getElementById('solve-code').value    = empty ? '' : encodeState();
+  document.getElementById('solve-link').value    = shareUrl();
+  document.getElementById('solve-subject').value = `Corral — ${PUZZLE.name}: ${area} enclosed`;
+
+  solvePop.hidden = false;
+  if (!empty) solveName.focus();
+}
+
 helpButton.addEventListener('click', e => {
   e.stopPropagation();
   helpPop.hidden ? openHelp() : closePopovers();
 });
+submitButton.addEventListener('click', e => {
+  e.stopPropagation();
+  solvePop.hidden ? openSolve() : closePopovers();
+});
 shareCopy.addEventListener('click', copyLink);
 document.getElementById('help-close').addEventListener('click', closePopovers);
 sharePop.addEventListener('click', e => e.stopPropagation());
-helpPop.addEventListener('click', e => e.stopPropagation());
+helpPop.addEventListener('click',  e => e.stopPropagation());
+solvePop.addEventListener('click', e => e.stopPropagation());
 document.addEventListener('click', () => closePopovers());
+
+// Queue the Formspree init. The CDN script is deferred, so it loads after this
+// file and drains the queue when it arrives.
+window.formspree = window.formspree || function () {
+  (formspree.q = formspree.q || []).push(arguments);
+};
+formspree('initForm', { formElement: '#solve-form', formId: 'xwlewkwk' });
 
 const HOW_TO = [
   { caption: '', wall: '#2E9E57', fill: '#9FE0B7', art: [
@@ -727,7 +774,11 @@ document.getElementById('ctl-cancel').addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && !(sharePop.hidden && helpPop.hidden)) { closePopovers(); return; }
+  if (e.key === 'Escape' && !(sharePop.hidden && helpPop.hidden && solvePop.hidden)) {
+    closePopovers();
+    return;
+  }
+  if (!solvePop.hidden) return;        // typing a name shouldn't spin the piece
   if (selected === null) return;
   const k = e.key.toLowerCase();
   if      (k === 'r')      transform(rotCW);
