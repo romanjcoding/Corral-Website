@@ -88,7 +88,7 @@ const PUZZLES = [
   {
     id: '7',
     name: 'Case Study #1',
-    difficulty: 4,
+    difficulty: 3,
     bestKnown: 11,
     notes: '33 with one more piece, then 48?',
     pieces: [
