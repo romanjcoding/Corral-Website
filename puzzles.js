@@ -395,7 +395,7 @@ const PUZZLES = [
 ];
 
 const UNLOCK = {
-  start:  '2026-04-17',
+  start:  '2026-08-17',
   perDay: 1,
 };
 
