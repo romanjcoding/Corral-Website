@@ -111,6 +111,18 @@ const PUZZLES = [
     ],
   },
   {
+    id: '9',
+    name: 'Angular',
+    difficulty: 8,
+    bestKnown: 10,
+    pieces: [
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
+    ],
+  },
+  {
     id: '999',
     name: 'LLL',
     difficulty: 1,
@@ -168,18 +180,6 @@ const PUZZLES = [
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
-    ],
-  },
-  {
-    id: '18',
-    name: 'Puzzle 18',
-    difficulty: 8,
-    bestKnown: 10,
-    pieces: [
-      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
-      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
-      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
-      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
     ],
   },
   {
@@ -374,6 +374,34 @@ const PUZZLES = [
     ],
   },
   {
+    id: '991',
+    name: '????',
+    difficulty: 6,
+    bestKnown: 15,
+    pieces: [
+      { cells:[[0,0],[1,1],[2,0],[4,0]] }, // diamond corners
+      { cells:[[0,0],[1,1],[2,0],[4,0]] }, // diamond corners
+      { cells:[[0,0],[1,1],[2,0],[4,0]] }, // diamond corners
+      { cells:[[0,0],[1,1],[2,0],[4,0]] }, // diamond corners
+    ],
+  },
+  {
+    id: '991',
+    name: 'Shortstack',
+    difficulty: 6,
+    bestKnown: 12,
+    pieces: [
+      { cells:[[0,0],[0,2]] }, // diamond corners
+      { cells:[[0,0],[0,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+    ],
+  },
+
+
+  {
     id: '997',
     name: 'Testing',
     difficulty: 0,
@@ -383,12 +411,12 @@ const PUZZLES = [
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1],[2,0]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
-      { cells:[[0,0],[0,3],[3,0]] },
-      { cells:[[0,0],[1,2],[1,0]] }, // diamond corners
-      { cells:[[0,0],[1,2],[1,0]] }, // diamond corners
-      { cells:[[0,0],[1,2],[1,0]] }, // diamond corners
-      { cells:[[0,0],[1,2],[1,0]] }, // diamond corners
-      { cells:[[0,0],[1,2],[1,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
     ],
   },
 
