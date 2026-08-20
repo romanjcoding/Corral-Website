@@ -113,7 +113,7 @@ const PUZZLES = [
   {
     id: '9',
     name: 'Angular',
-    difficulty: 8,
+    difficulty: 7,
     bestKnown: 10,
     pieces: [
       { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
