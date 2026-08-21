@@ -126,14 +126,14 @@ const PUZZLES = [
     id: '10',
     name: 'French Fry',
     difficulty: 10,
-    bestKnown: 13,
+    bestKnown: 16,
     pieces: [
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
     ],
   },
   {
