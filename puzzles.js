@@ -126,8 +126,9 @@ const PUZZLES = [
     id: '10',
     name: 'French Fry',
     difficulty: 10,
-    bestKnown: 16,
+    bestKnown: 22,
     pieces: [
+      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
       { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
       { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
       { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
