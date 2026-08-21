@@ -123,6 +123,35 @@ const PUZZLES = [
     ],
   },
   {
+    id: '10',
+    name: 'French Fry',
+    difficulty: 10,
+    bestKnown: 13,
+    pieces: [
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+    ],
+  },
+  {
+    id: '980',
+    name: 'Box-in-a-Box',
+    difficulty: 10,
+    bestKnown: 31,
+    pieces: [
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
+      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
+      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
+      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
+    ],
+  },
+  {
     id: '999',
     name: 'LLL',
     difficulty: 1,
@@ -196,21 +225,6 @@ const PUZZLES = [
     ],
   },
   {
-    id: '993',
-    name: 'Puzzle 5',
-    difficulty: 10,
-    bestKnown: 31,
-    pieces: [
-      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
-      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
-      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
-      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
-      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
-      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
-      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
-    ],
-  },
-  {
     id: '999',
     name: 'Puzzle 5',
     difficulty: 5,
@@ -234,7 +248,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '10',
+    id: '980',
     name: 'Puzzle 10',
     difficulty: 6,
     bestKnown: null,
@@ -386,7 +400,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '991',
+    id: '990',
     name: 'Shortstack',
     difficulty: 6,
     bestKnown: 12,
@@ -407,16 +421,24 @@ const PUZZLES = [
     difficulty: 0,
     bestKnown: null,
     pieces: [
+      { cells:[[0,0],[0,3],[3,0],[3,3]] },   // 3-square hollow corners
+      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
+      { cells:[[0,0],[1,-1],[2,0],[2,2]] },
+      { cells:[[0,0],[3,3]] },
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
+      { cells:[[1,1],[-1,-1],[1,-1],[-1,1]] }, // corners
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },  
       { cells:[[0,0],[1,0],[2,1],[2,-1]] }, // diamond corners
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1],[2,0]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,2],[2,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
     ],
   },
 
