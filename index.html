@@ -10,6 +10,7 @@
 <body>
 <main>
   <h1 class="index-title">Corral</h1>
+  <p class="index-note" id="index-note"></p>
   <div id="puzzle-list"></div>
 </main>
 
@@ -18,8 +19,8 @@
 
 const PREVIEW_W   = 168;
 const PREVIEW_H   = 48;
-const PREVIEW_GAP = 8;   
-const PREVIEW_ROW = 4; 
+const PREVIEW_GAP = 8;
+const PREVIEW_ROW = 4;
 
 function previewFits(dims, size) {
   const px = n => n * (size + 1) - 1;   // mini-grids put 1px between cells
@@ -52,7 +53,6 @@ function previewSize(pieces) {
 const list = document.getElementById('puzzle-list');
 
 // Only the puzzles that have opened. Starters are always in; the rest arrive
-// one a day (see UNLOCK in puzzles.js).
 const open = unlockedPuzzles();
 
 for (const p of open) {

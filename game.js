@@ -299,6 +299,7 @@ function buildTray() {
     trayEl.appendChild(wrap);
   });
 }
+
 function enclosedSet(rows, cols, isWall) {
   const outside = new Set();
   const stack = [];
@@ -549,6 +550,9 @@ function syncUrl() {
   catch { /* file:// and the like — the share button still works */ }
 }
 
+// The share popover has no trigger in puzzle.html right now; uncomment the
+// #share-button there and this wires itself up again.
+const shareButton = document.getElementById('share-button');
 const sharePop    = document.getElementById('share-popover');
 const shareLink   = document.getElementById('share-link');
 const shareCopy   = document.getElementById('share-copy');
@@ -640,6 +644,10 @@ helpButton.addEventListener('click', e => {
 submitButton.addEventListener('click', e => {
   e.stopPropagation();
   solvePop.hidden ? openSolve() : closePopovers();
+});
+shareButton?.addEventListener('click', e => {
+  e.stopPropagation();
+  sharePop.hidden ? openShare() : closePopovers();
 });
 shareCopy.addEventListener('click', copyLink);
 document.getElementById('help-close').addEventListener('click', closePopovers);
@@ -778,7 +786,8 @@ document.addEventListener('keydown', e => {
     closePopovers();
     return;
   }
-  if (!solvePop.hidden) return;        // typing a name shouldn't spin the piece
+  if (e.target instanceof HTMLInputElement) return;   // typing shouldn't spin the piece
+  if (!solvePop.hidden) return;
   if (selected === null) return;
   const k = e.key.toLowerCase();
   if      (k === 'r')      transform(rotCW);

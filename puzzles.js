@@ -226,7 +226,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '999',
+    id: '978',                             // was '999' — clashed with LLL
     name: 'Puzzle 5',
     difficulty: 5,
     bestKnown: 9,
@@ -249,7 +249,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '980',
+    id: '979',                             // was '980' — clashed with Box-in-a-Box
     name: 'Puzzle 10',
     difficulty: 6,
     bestKnown: null,
@@ -354,7 +354,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '994',
+    id: '976',                             // was '994' — clashed with Staircase
     name: '',
     difficulty: 6,
     bestKnown: 6,
@@ -365,7 +365,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '993',
+    id: '977',                             // was '993' — clashed with Puzzle 8
     name: '',
     difficulty: 1,
     bestKnown: 2,
@@ -429,7 +429,7 @@ const PUZZLES = [
       { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
       { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
       { cells:[[1,1],[-1,-1],[1,-1],[-1,1]] }, // corners
-      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },  
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1]] }, // diamond corners
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1],[2,0]] },
@@ -446,8 +446,12 @@ const PUZZLES = [
 ];
 
 const UNLOCK = {
-  start:  '2026-08-17',
-  perDay: 1,
+  start: '2026-08-17',
+  perRelease: 1,
+
+  days: [1, 2, 3, 4, 5],
+
+  skip: [],
 };
 
 const STARTERS = PUZZLES.filter(p => p.starter);
@@ -458,10 +462,50 @@ const parseDay = s => { const [y, m, d] = s.split('-').map(Number); return new D
 
 const daysBetween = (a, b) => Math.round((midnight(b) - midnight(a)) / 86400000);
 
+const iso = d =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+// Does a puzzle come out on this date?
+function isReleaseDay(d) {
+  if (UNLOCK.skip?.includes(iso(d))) return false;
+  const elapsed = daysBetween(parseDay(UNLOCK.start), d);
+  if (elapsed < 0) return false;
+  if (UNLOCK.everyDays) return elapsed % UNLOCK.everyDays === 0;
+  return UNLOCK.days.includes(d.getDay());
+}
+
+// How many release days have happened, counting today.
+function releasesSoFar(now = new Date()) {
+  const start   = parseDay(UNLOCK.start);
+  const elapsed = daysBetween(start, now);
+  if (elapsed < 0) return 0;
+
+  const span = elapsed + 1;                 // days in the window, inclusive
+
+  let count;
+  if (UNLOCK.everyDays) {
+    count = Math.floor(elapsed / UNLOCK.everyDays) + 1;
+  } else {
+    // whole weeks contribute a fixed number, then walk the remainder
+    const allowed = new Set(UNLOCK.days);
+    count = Math.floor(span / 7) * allowed.size;
+    const dow = start.getDay();
+    for (let i = 0; i < span % 7; i++) if (allowed.has((dow + i) % 7)) count++;
+  }
+
+  // subtract any skipped dates that land inside the window
+  for (const s of UNLOCK.skip ?? []) {
+    const d   = parseDay(s);
+    const off = daysBetween(start, d);
+    if (off < 0 || off > elapsed) continue;
+    if (UNLOCK.everyDays ? off % UNLOCK.everyDays === 0 : UNLOCK.days.includes(d.getDay())) count--;
+  }
+
+  return Math.max(0, count);
+}
+
 function unlockedDailyCount(now = new Date()) {
-  const days = daysBetween(parseDay(UNLOCK.start), now);
-  if (days < 0) return 0;
-  return Math.min(DAILY.length, (days + 1) * UNLOCK.perDay);
+  return Math.min(DAILY.length, releasesSoFar(now) * UNLOCK.perRelease);
 }
 
 function isUnlocked(puzzle, now = new Date()) {
@@ -474,7 +518,27 @@ function unlockedPuzzles(now = new Date()) {
   return PUZZLES.filter(p => isUnlocked(p, now));
 }
 
+// Next date a puzzle appears, or null once the queue runs dry.
+function nextUnlock(now = new Date()) {
+  if (unlockedDailyCount(now) >= DAILY.length) return null;
+  const d = midnight(now);
+  for (let i = 1; i <= 366; i++) {
+    d.setDate(d.getDate() + 1);
+    if (isReleaseDay(d)) return new Date(d);
+  }
+  return null;
+}
+
 const PUZZLES_BY_ID = Object.fromEntries(PUZZLES.map(p => [p.id, p]));
+
+// A duplicate id silently shadows the earlier puzzle: its card would open a
+// different board than it previews, and a submission would name the wrong
+// puzzle. Shout in the console rather than failing quietly.
+{
+  const seen = new Set(), dupes = new Set();
+  for (const p of PUZZLES) (seen.has(p.id) ? dupes : seen).add(p.id);
+  if (dupes.size) console.warn('Duplicate puzzle ids:', [...dupes].join(', '));
+}
 
 ARC_START = 250;
 const ARC_SWEEP_PER = 45;

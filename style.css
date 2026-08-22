@@ -3,11 +3,11 @@
 *, :after, :before { box-sizing: border-box; }
 
 :root {
-  --cell-size: 32px;      
+  --cell-size: 32px;
   --tool-size: max(28px, var(--cell-size));
-  --bar-h: 22px;        
+  --bar-h: 22px;
   --bar-gap: 6px;
-  --piece-cell: 18px;    
+  --piece-cell: 18px;
 }
 
 html {
@@ -267,8 +267,6 @@ main {
   margin-bottom: 12px;
 }
 
-
-
 .how-fig  { text-align: center; }
 .how-grid { display: grid; gap: 1px; margin: 0 auto 6px; --how-cell: 12px; }
 .how-cell { width: var(--how-cell); height: var(--how-cell); background: #fffaf2; }
@@ -427,6 +425,7 @@ main {
 
 .index-title { font-family: 'Playfair Display', serif; font-size: 42px; margin: 0; }
 .index-note  { margin: -10px 0 0; font-size: 14px; opacity: 0.75; }
+.index-note[hidden] { display: none; }
 
 #puzzle-list {
   display: grid;
