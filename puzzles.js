@@ -138,6 +138,18 @@ const PUZZLES = [
     ],
   },
   {
+    id: '11',
+    name: 'Shiny!',
+    difficulty: 1,
+    bestKnown: 5,
+    pieces: [
+      { cells:[[0,0],[2,2]] },
+      { cells:[[0,0],[2,2]] },
+      { cells:[[0,0],[2,2]] },
+      { cells:[[0,0],[2,2]] },
+    ],
+  },
+  {
     id: '980',
     name: 'Box-in-a-Box',
     difficulty: 10,
@@ -260,7 +272,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '11',
+    id: '800',
     name: 'Puzzle 11',
     difficulty: 2,
     bestKnown: null,
@@ -291,18 +303,6 @@ const PUZZLES = [
       { cells:[[0,0],[2,2]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
-    ],
-  },
-  {
-    id: '17',
-    name: 'Puzzle 17',
-    difficulty: 2,
-    bestKnown: 5,
-    pieces: [
-      { cells:[[0,0],[2,2]] },
-      { cells:[[0,0],[2,2]] },
-      { cells:[[0,0],[2,2]] },
-      { cells:[[0,0],[2,2]] },
     ],
   },
   {
@@ -414,8 +414,30 @@ const PUZZLES = [
       { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
     ],
   },
-
-
+  {
+    id: '989',
+    name: 'Game',
+    difficulty: 6,
+    bestKnown: 11,
+    pieces: [
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
+    ],
+  },
+  {
+    id: '987',
+    name: 'The Onion',
+    difficulty: 4,
+    bestKnown: 8,
+    pieces: [
+      { cells:[[0,0],[0,2],[6,2],[6,0]] }, // diamond corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,2],[2,2],[2,0]] }, // 4-square hollow corners
+      { cells:[[1,1],[-1,-1],[1,-1],[3,-1],[1,-3]] },
+    ],
+  },
   {
     id: '997',
     name: 'Testing',
@@ -427,19 +449,16 @@ const PUZZLES = [
       { cells:[[0,0],[1,-1],[2,0],[2,2]] },
       { cells:[[0,0],[3,3]] },
       { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
-      { cells:[[0,0],[0,1],[0,2]] },       // 3-bar
-      { cells:[[1,1],[-1,-1],[1,-1],[-1,1]] }, // corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,4],[4,4],[4,0]] }, // 4-square hollow corners
+      { cells:[[0,0],[0,2],[2,2],[2,0]] }, // 4-square hollow corners
       { cells:[[1,1],[-1,-1],[1,-1],[3,-1]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1]] }, // diamond corners
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,1],[2,-1],[2,0]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,1],[2,2]] }, // diamond corners
+      { cells:[[0,0],[1,1],[2,2],[3,3]] }, // diamond corners
+      { cells:[[0,0],[0,2],[6,2],[6,0]] }, // diamond corners
     ],
   },
 
@@ -448,9 +467,7 @@ const PUZZLES = [
 const UNLOCK = {
   start: '2026-08-17',
   perRelease: 1,
-
   days: [1, 2, 3, 4, 5],
-
   skip: [],
 };
 
@@ -531,9 +548,6 @@ function nextUnlock(now = new Date()) {
 
 const PUZZLES_BY_ID = Object.fromEntries(PUZZLES.map(p => [p.id, p]));
 
-// A duplicate id silently shadows the earlier puzzle: its card would open a
-// different board than it previews, and a submission would name the wrong
-// puzzle. Shout in the console rather than failing quietly.
 {
   const seen = new Set(), dupes = new Set();
   for (const p of PUZZLES) (seen.has(p.id) ? dupes : seen).add(p.id);
