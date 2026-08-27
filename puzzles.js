@@ -160,6 +160,20 @@ const PUZZLES = [
       { cells:[[0,0],[0,3],[3,0]] },
     ],
   },
+  
+  {
+    id: '13',
+    name: 'Case Study #2',
+    difficulty: 5,
+    bestKnown: 18,
+    notes: '33 with one more piece, then 48?',
+    pieces: [
+      { cells:[[0,0],[1,1],[2,2],[3,3]] },
+      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+      { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+    ],
+  },
   {
     id: '13',
     name: 'Case Study #2',
@@ -230,7 +244,11 @@ const PUZZLES = [
     ],
   },
   {
+<<<<<<< HEAD
     id: '800',
+=======
+    id: '780',
+>>>>>>> a828cf4c200d7b3a052268bc278cc5d5978a7e8a
     name: 'Puzzle 13',
     difficulty: 5,
     bestKnown: null,
