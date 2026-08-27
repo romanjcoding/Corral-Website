@@ -180,7 +180,7 @@ const PUZZLES = [
   },
   {
     id: '14',
-    name: 'Beetroot',
+    name: 'Turnip',
     difficulty: 8,
     bestKnown: 15,
     pieces: [
