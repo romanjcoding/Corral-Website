@@ -181,8 +181,8 @@ const PUZZLES = [
   {
     id: '14',
     name: 'Beetroot',
-    difficulty: 15,
-    bestKnown: null,
+    difficulty: 7,
+    bestKnown: 15,
     pieces: [
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
       { cells:[[0,0],[0,4],[4,0],[4,4],[3,3],[1,1],[1,3]] },
