@@ -313,7 +313,7 @@ const PUZZLES = [
     ],
   },
   {
-    id: '14',
+    id: '700',
     name: 'Puzzle 14',
     difficulty: 3.5,
     bestKnown: null,
