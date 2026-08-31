@@ -187,7 +187,6 @@ const PUZZLES = [
 
     ],
   },
-  
   {
     id: '15',
     name: 'Case Study #3',
@@ -201,6 +200,17 @@ const PUZZLES = [
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[-1,0]] },
+    ],
+  },
+  {
+    id: '16',
+    name: 'Bokosan',
+    difficulty: 2,
+    bestKnown: 8,
+    pieces: [
+      { cells:[[0,0],[0,3],[3,3],[3,0]] },   // 3-square hollow corners
+      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
+      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
     ],
   },
   {
@@ -309,17 +319,6 @@ const PUZZLES = [
     bestKnown: null,
     pieces: [
       { cells:[[0,0],[0,3],[3,0],[3,3]] },   // 3-square hollow corners
-      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
-      { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
-    ],
-  },
-  {
-    id: '800',
-    name: 'Puzzle 11',
-    difficulty: 2,
-    bestKnown: null,
-    pieces: [
-      { cells:[[0,0],[0,3],[3,3],[3,0]] },   // 3-square hollow corners
       { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
       { cells:[[0,0],[2,2],[-2,2],[0,4]] },  // diamond corners
     ],
