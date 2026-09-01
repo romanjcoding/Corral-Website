@@ -215,7 +215,7 @@ const PUZZLES = [
   },
   {
     id: '17',                             // was '999' — clashed with LLL
-    name: 'Polyplet',
+    name: 'Polyking',
     difficulty: 3,
     bestKnown: 9,
     pieces: [
