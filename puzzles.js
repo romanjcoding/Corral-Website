@@ -214,6 +214,18 @@ const PUZZLES = [
     ],
   },
   {
+    id: '17',                             // was '999' — clashed with LLL
+    name: 'Polyplet',
+    difficulty: 3,
+    bestKnown: 9,
+    pieces: [
+      { cells:[[1,1],[-1,-1],[1,-1],[-1,1]] }, // corners
+      { cells:[[1,1],[-1,-1],[3,-1]] },
+      { cells:[[1,1],[-1,1],[0,0],[2,2],[-2,2]] },
+    ],
+  },
+
+  {
     id: '980',
     name: 'Box-in-a-Box',
     difficulty: 10,
@@ -287,17 +299,6 @@ const PUZZLES = [
       { cells:[[0,0],[0,1]] },             // domino
       { cells:[[0,0],[0,1]] },             // domino
       { cells:[[0,0],[-1,1],[1,3],[2,2]] },
-    ],
-  },
-  {
-    id: '978',                             // was '999' — clashed with LLL
-    name: 'Puzzle 5',
-    difficulty: 5,
-    bestKnown: 9,
-    pieces: [
-      { cells:[[1,1],[-1,-1],[1,-1],[-1,1]] }, // corners
-      { cells:[[1,1],[-1,-1],[3,-1]] },
-      { cells:[[1,1],[-1,1],[0,0],[2,2],[-2,2]] },
     ],
   },
   {
@@ -496,7 +497,6 @@ const PUZZLES = [
       { cells:[[0,0]] },
       { cells:[[0,0],[2,0]] },
       { cells:[[0,0],[2,0]] },
-      { cells:[[0,0],[2,0],[4,0]] },
       { cells:[[0,0],[2,0],[4,0]] },
       { cells:[[0,0],[2,0],[4,0],[6,0]] },
       // { cells:[[0,0],[1,1],[2,2],[3,3]] }, // diamond corners
