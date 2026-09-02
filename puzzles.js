@@ -527,7 +527,7 @@ const PUZZLES = [
 ];
 
 const UNLOCK = {
-  start: '2026-04-17',
+  start: '2026-08-17',
   perRelease: 1,
   days: [1, 2, 3, 4, 5],
   skip: [],
