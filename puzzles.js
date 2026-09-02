@@ -227,7 +227,7 @@ const PUZZLES = [
   {
     id: '18',
     name: '????',
-    difficulty: 6,
+    difficulty: 5,
     bestKnown: 15,
     pieces: [
       { cells:[[0,0],[1,1],[2,0],[4,0]] }, // diamond corners
