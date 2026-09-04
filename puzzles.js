@@ -250,6 +250,21 @@ const PUZZLES = [
   },
   {
     id: '20',
+    name: 'Shortstack',
+    difficulty: 8+1,
+    bestKnown: 22,
+    pieces: [
+      { cells:[[0,0],[0,1],[0,2],[0,3]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
+    ],
+  },
+  {
+    id: '21',
     name: 'Lobster',
     difficulty: 6,
     bestKnown: 16,
@@ -319,10 +334,13 @@ const PUZZLES = [
     bestKnown: 13,
     pieces: [
       { cells:[[0,0],[0,3],[3,3],[3,0]] }, // 3-square hollow corners
-      { cells:[[0,0],[0,3],[3,3],[3,0]] }, // 3-square hollow corners
-      { cells:[[0,0],[0,1]] },             // domino
-      { cells:[[0,0],[0,1]] },             // domino
-      { cells:[[0,0],[-1,1],[1,3],[2,2]] },
+      { cells:[[0,0],[0,1],[1,1]] }, // 3-square hollow corners
+      { cells:[[0,0],[0,1],[0,2],[0,3],[0,4],[1,4],[2,4],] },             // domino
+      { cells:[[0,0],[0,1],[0,2],[0,3],[0,4],[1,4],[2,4],] },             // domino
+      { cells:[[0,0],[0,1],[1,1]] }, // 3-square hollow corners
+      { cells:[[0,0],[0,1],[0,2],[0,3],[0,4],[1,4],[2,4],] },             // domino
+      { cells:[[0,0],[0,1],[0,2],[0,3],[0,4],[1,4],[2,4],] },             // domino
+
     ],
   },
   {
@@ -429,20 +447,6 @@ const PUZZLES = [
       { cells:[[0,0],[3,3]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[2,2]] },
       { cells:[[0,0],[1,0],[2,0],[2,1],[2,2]] },
-    ],
-  },
-  {
-    id: '990',
-    name: 'Shortstack',
-    difficulty: 6,
-    bestKnown: 12,
-    pieces: [
-      { cells:[[0,0],[0,2]] }, // diamond corners
-      { cells:[[0,0],[0,2]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
-      { cells:[[0,0],[0,1],[2,0]] }, // diamond corners
     ],
   },
   {
